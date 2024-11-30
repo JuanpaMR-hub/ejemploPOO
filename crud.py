@@ -90,4 +90,8 @@ def eliminar_musico():
         print(f"Musico {musicos[musico].nombre_musico} eliminado correctamente")
 
 
-mostrar_objetos("MUSICO")
+# DEMOSTRACION DEL FUNCIONAMIENTO
+crear_musico()
+crear_banda()
+asociar_banda_musico()
+mostrar_objetos()
