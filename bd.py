@@ -1,13 +1,14 @@
-import oracledb
+import oracledb #No olvidar instalar con "pip install oracledb"
 import getpass
 
 
 #CREDENCIALES
-user = 'SQLUSER'
+user = 'SQLUSER' #Aqui cambiar por el usuario que tengan ustedes
 pswd = getpass.getpass("Ingrese contraseña: ")
 dsn = 'localhost/xe'
 
 
+#Para hacer una consulta se requiere una query y un tipo de query. Este tipo de query puede ser 'select','insert','update','delete'
 def hacer_consulta(query, tipo_query):
     try:
         #Crear conexion
