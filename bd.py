@@ -9,7 +9,7 @@ dsn = 'localhost/xe'
 
 
 #Para hacer una consulta se requiere una query y un tipo de query. Este tipo de query puede ser 'select','insert','update','delete'
-def hacer_consulta(query, tipo_query):
+def hacer_consulta(query, tipo_query, variables=None):
     try:
         #Crear conexion
         connection = oracledb.connect(user=user, password=pswd, dsn=dsn)
@@ -22,7 +22,7 @@ def hacer_consulta(query, tipo_query):
                 cursor.execute(query)
                 return cursor.fetchall()
             else:
-                cursor.execute(query)
+                cursor.execute(query,variables)
                 connection.commit()
         
         except Exception as e:
