@@ -18,17 +18,20 @@ Banda: {self.banda}
     
     def add_banda(self,banda):
         self.banda = banda
-        query = f"UPDATE MUSICO SET id_banda = {self.banda.id_banda} WHERE id_musico = {self.id_musico}"
-        hacer_consulta(query,'update')
+        query = "UPDATE MUSICO SET id_banda = :id_banda WHERE id_musico = :id_musico"
+        variables = [self.banda.id_banda , self.id_musico]
+        hacer_consulta(query,'update',variables)
         
 
     def guardar_musico(self):
-        query = f"INSERT INTO MUSICO VALUES({self.id_musico},'{self.nombre_musico}','{self.instrumento}',{self.banda if self.banda != None else "NULL" })"
-        hacer_consulta(query,'insert')
+        query = "INSERT INTO MUSICO VALUES(:id_musico, :nombre_musico, :instrumento, :banda)"
+        variables = [self.id_musico, self.nombre_musico, self.instrumento, self.banda if self.banda != None else "NULL"]
+        hacer_consulta(query,'insert',variables)
 
     def eliminar_musico(self):
-        query = f"DELETE FROM MUSICO WHERE id_musico = {self.id_musico} "
-        hacer_consulta(query,'delete')
+        query = "DELETE FROM MUSICO WHERE id_musico = :id_musico "
+        variables = [self.id_musico]
+        hacer_consulta(query,'delete',variables)
 
 
 
