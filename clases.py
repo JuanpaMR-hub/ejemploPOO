@@ -52,7 +52,8 @@ Nombre Banda: {self.nombre_banda}
         return self.nombre_banda
     
     def guardar_banda(self):
-        query = f"INSERT INTO BANDA VALUES({self.id_banda},'{self.nombre_banda}')"
-        hacer_consulta(query,'insert')
+        query = "INSERT INTO BANDA VALUES(:id_banda,:nombre_banda)"
+        variables = [self.id_banda,self.nombre_banda]
+        hacer_consulta(query,'insert',variables)
 
 
