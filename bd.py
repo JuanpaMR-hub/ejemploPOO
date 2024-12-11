@@ -18,11 +18,10 @@ def hacer_consulta(query, tipo_query, variables=None):
         cursor = connection.cursor()
         
         try:
-            if tipo_query == 'select':
-                cursor.execute(query)
+            cursor.execute(query,variables)
+            if tipo_query == 'select':   
                 return cursor.fetchall()
             else:
-                cursor.execute(query,variables)
                 connection.commit()
         
         except Exception as e:
